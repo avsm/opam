@@ -66,11 +66,11 @@ libuninstall:
 uninstall:
 	src/opam-installer -u $(OPAMINSTALLER_FLAGS) opam.install
 
-checkinstall-%:
+checkinstall-debian:
 	./configure --prefix=/usr
 	make lib-ext
 	make
-	sudo checkinstall -y -$* \
+	sudo checkinstall -y -D \
 	  --maintainer=opam-devel@lists.ocaml.org \
 	  --pkgname=opam \
 	  --pkgversion=${version} --pkgrelease=5 \
