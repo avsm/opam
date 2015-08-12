@@ -66,6 +66,16 @@ libuninstall:
 uninstall:
 	src/opam-installer -u $(OPAMINSTALLER_FLAGS) opam.install
 
+checkinstall-%:
+	./configure --prefix=/usr
+	make lib-ext
+	make
+	sudo checkinstall -y -$* \
+	  --maintainer=opam-devel@lists.ocaml.org \
+	  --pkgname=opam \
+	  --pkgversion=${version} --pkgrelease=5 \
+	  --requires=git,rsync,aspcud,ocaml-native-compilers,camlp4-extra,unzip,curl
+
 .PHONY: tests tests-local tests-git
 tests: opam opam-admin opam-check
 	$(MAKE) -C tests all
