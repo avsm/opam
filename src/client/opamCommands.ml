@@ -2459,7 +2459,7 @@ let pin ?(unpin_only=false) () =
          If unset or $(i,auto), is inferred from the format of the target, \
          defaulting to the appropriate version control if one is detected in \
          the given directory, or to $(i,path) otherwise. $(i,OPAMPINKINDAUTO) \
-         can be set to \"0\" to disable automatic detection of version control.\
+         can be set to \"0\" to disable automatic detection of version control. \
          Use $(i,none) to pin without a target (for virtual packages)."
         (Arg.doc_alts_enum main_kinds)
     in
